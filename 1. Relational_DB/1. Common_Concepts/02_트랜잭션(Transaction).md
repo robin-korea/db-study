@@ -55,11 +55,11 @@
 ### 격리 수준의 4단계
 
 | 수준 | 이름 | 설명 | 발생하는 문제 |
-| :---:  | :--- | :--- | :--- |
-| **Lv 0** | **READ UNCOMMITTED (커밋되지 않은 읽기)** | Commit되지 않은 내용도 읽을 수 있음. | Dirty Read, Non-Repeatable Read, Phantom Read |
-| **Lv 1** | **READ COMMITTED (커밋된 읽기)** | Commit된 내용만 읽을 수 있음.<br>**(대부분 DB의 기본값)** | Non-Repeatable Read, Phantom Read |
-| **Lv 2**| **REPEATABLE READ (반복 가능한 읽기)** | 트랜잭션이 시작된 시점의 데이터를 읽음.<br>**(MySQL의 기본값)** | Phantom Read |
-| **Lv 3** | **SERIALIZABLE (직렬화 가능)** | 가장 엄격. 트랜잭션을 순서대로 실행.<br>동시성이 거의 없음. | 없음 |
+| :---: | :--- | :--- | :--- |
+| **Lv 0** | **READ UNCOMMITTED (커밋되지 않은 읽기)** | Commit되지 않은 다른 트랜잭션의 내용을 읽을 수 있음. | Dirty Read, Non-Repeatable Read, Phantom Read |
+| **Lv 1** | **READ COMMITTED (커밋된 읽기)** | Commit된 내용만 읽을 수 있음. **(대부분 DB의 기본값)** | Non-Repeatable Read, Phantom Read |
+| **Lv 2**| **REPEATABLE READ (반복 가능한 읽기)** | 트랜잭션이 시작된 시점의 데이터를 읽음. **(MySQL의 기본값)** | Phantom Read |
+| **Lv 3** | **SERIALIZABLE (직렬화 가능)** | 가장 엄격. 트랜잭션을 순서대로 하나씩 실행하여 동시성이 거의 없음. | 없음 |
 
 -   **위로 갈수록 성능이 좋지만, 데이터 부정합 문제가 발생할 수 있다.**
 -   **아래로 갈수록 안전하지만, 동시 처리 성능이 떨어진다.**
