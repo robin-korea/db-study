@@ -55,7 +55,7 @@
 ### 격리 수준의 4단계
 
 | 수준 | 이름 | 설명 | 발생하는 문제 |
-| :---: | :--- | :--- | :--- |
+| --- | --- | --- | --- |
 | **Lv 0** | **READ UNCOMMITTED (커밋되지 않은 읽기)** | Commit되지 않은 다른 트랜잭션의 내용을 읽을 수 있음. | Dirty Read, Non-Repeatable Read, Phantom Read |
 | **Lv 1** | **READ COMMITTED (커밋된 읽기)** | Commit된 내용만 읽을 수 있음. **(대부분 DB의 기본값)** | Non-Repeatable Read, Phantom Read |
 | **Lv 2**| **REPEATABLE READ (반복 가능한 읽기)** | 트랜잭션이 시작된 시점의 데이터를 읽음. **(MySQL의 기본값)** | Phantom Read |
