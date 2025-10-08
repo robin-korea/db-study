@@ -30,4 +30,39 @@ WITH RENTAL_STATS AS (
         book_id
 )
 SELECT
+    b.title,
+    b.author,
+    rs.rental_count,
+    RANK() OVER (ORDER BY rs.rental_count DESC) AS "대출 순위"
+FROM
+    RENTAL_STATS rs
+JOIN
+    Book b ON rs.book_id = b.book_id
+ORDER BY
+    "대출 순위";
+
+-- View 로 만들어 사용해보기
+
+CREATE OR REPLACE VIEW V_BEST_BOOKS AS
+WITH RENTAL_STATS AS (
+    SELECT
+        book_id,
+        COUNT(*) AS rental_count
+    FROM
+        RENTALS
+    GROUP BY
+        book_id
+)
+SELECT
+    b.title,
+    b.author,
+    rs.rental_count,
+    RANK() OVER (ORDER BY rs.rental_count DESC) AS rental_rank
+FROM
+    RENTAL_STATS rs
+JOIN
+    Book b ON rs.book_id = b.book_id;
+
+-- 뷰 사용하기
+SELECT * FROM V_BEST_BOOKS;
     
