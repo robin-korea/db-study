@@ -25,3 +25,8 @@ CREATE TABLE RENTALS(
     rental_date DATE DEFAULT SYSDATE,
     return_date DATE
 );
+
+-- 인덱스 생성
+CREATE INDEX idx_rentals_book_id ON RENTALS(book_id);
+CREATE INDEX idx_rentals_member_id ON RENTALS(member_id);
+
